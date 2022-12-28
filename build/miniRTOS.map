@@ -1,0 +1,181 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+                              build/stdio.o (__aeabi_uidiv)
+/usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+                              /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD build/Entry.os
+LOAD build/Main.o
+LOAD build/regs.o
+LOAD build/uart.o
+LOAD build/stdio.o
+LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a
+                0x0000000000000000                . = 0x0
+
+.text           0x0000000000000000      0x7d4
+ *(vector_start)
+ *(.text .rodata)
+ .text          0x0000000000000000       0xd4 build/Entry.os
+                0x0000000000000000                vector_start
+                0x000000000000003c                vector_end
+ .text          0x00000000000000d4       0x20 build/Main.o
+                0x00000000000000d4                main
+ .rodata        0x00000000000000f4        0xf build/Main.o
+ .text          0x0000000000000103        0x0 build/regs.o
+ *fill*         0x0000000000000103        0x1 
+ .text          0x0000000000000104      0x15c build/uart.o
+                0x0000000000000104                Hal_uart_init
+                0x000000000000017c                Hal_uart_put_char
+                0x00000000000001d8                Hal_uart_get_char
+ .text          0x0000000000000260      0x454 build/stdio.o
+                0x0000000000000260                putstr
+                0x00000000000002c0                debug_printf
+                0x0000000000000310                vsprintf
+                0x0000000000000590                utoa
+ .rodata        0x00000000000006b4        0x7 build/stdio.o
+ *fill*         0x00000000000006bb        0x1 
+ .text          0x00000000000006bc      0x114 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+                0x00000000000006bc                __udivsi3
+                0x00000000000006bc                __aeabi_uidiv
+                0x00000000000007b0                __aeabi_uidivmod
+ .text          0x00000000000007d0        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+                0x00000000000007d0                __aeabi_ldiv0
+                0x00000000000007d0                __aeabi_idiv0
+
+.glue_7         0x00000000000007d4        0x0
+ .glue_7        0x00000000000007d4        0x0 linker stubs
+
+.glue_7t        0x00000000000007d4        0x0
+ .glue_7t       0x00000000000007d4        0x0 linker stubs
+
+.vfp11_veneer   0x00000000000007d4        0x0
+ .vfp11_veneer  0x00000000000007d4        0x0 linker stubs
+
+.v4_bx          0x00000000000007d4        0x0
+ .v4_bx         0x00000000000007d4        0x0 linker stubs
+
+.iplt           0x00000000000007d4        0x0
+ .iplt          0x00000000000007d4        0x0 build/Entry.os
+
+.rel.dyn        0x00000000000007d4        0x0
+ .rel.iplt      0x00000000000007d4        0x0 build/Entry.os
+
+.data           0x00000000000007d4        0x4
+ *(.data)
+ .data          0x00000000000007d4        0x0 build/Entry.os
+ .data          0x00000000000007d4        0x0 build/Main.o
+ .data          0x00000000000007d4        0x4 build/regs.o
+                0x00000000000007d4                Uart
+ .data          0x00000000000007d8        0x0 build/uart.o
+ .data          0x00000000000007d8        0x0 build/stdio.o
+ .data          0x00000000000007d8        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .data          0x00000000000007d8        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.igot.plt       0x00000000000007d8        0x0
+ .igot.plt      0x00000000000007d8        0x0 build/Entry.os
+
+.bss            0x00000000000007d8      0x400
+ *(.bss)
+ .bss           0x00000000000007d8        0x0 build/Entry.os
+ .bss           0x00000000000007d8        0x0 build/Main.o
+ .bss           0x00000000000007d8        0x0 build/regs.o
+ .bss           0x00000000000007d8        0x0 build/uart.o
+ .bss           0x00000000000007d8      0x400 build/stdio.o
+ .bss           0x0000000000000bd8        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .bss           0x0000000000000bd8        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+OUTPUT(build/miniRTOS.axf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x0000000000000000       0x2b
+ .ARM.attributes
+                0x0000000000000000       0x1d build/Entry.os
+ .ARM.attributes
+                0x000000000000001d       0x2f build/Main.o
+ .ARM.attributes
+                0x000000000000004c       0x2f build/regs.o
+ .ARM.attributes
+                0x000000000000007b       0x2f build/uart.o
+ .ARM.attributes
+                0x00000000000000aa       0x2f build/stdio.o
+ .ARM.attributes
+                0x00000000000000d9       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000000000000f5       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.comment        0x0000000000000000       0x33
+ .comment       0x0000000000000000       0x33 build/Main.o
+                                         0x34 (size before relaxing)
+ .comment       0x0000000000000033       0x34 build/regs.o
+ .comment       0x0000000000000033       0x34 build/uart.o
+ .comment       0x0000000000000033       0x34 build/stdio.o
+
+.debug_line     0x0000000000000000      0x41a
+ .debug_line    0x0000000000000000       0x6d build/Entry.os
+ .debug_line    0x000000000000006d       0x42 build/Main.o
+ .debug_line    0x00000000000000af       0x4e build/regs.o
+ .debug_line    0x00000000000000fd       0xd3 build/uart.o
+ .debug_line    0x00000000000001d0      0x17f build/stdio.o
+ .debug_line    0x000000000000034f       0x74 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .debug_line    0x00000000000003c3       0x57 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.debug_info     0x0000000000000000     0x1a7d
+ .debug_info    0x0000000000000000       0x26 build/Entry.os
+ .debug_info    0x0000000000000026       0x70 build/Main.o
+ .debug_info    0x0000000000000096      0xb38 build/regs.o
+ .debug_info    0x0000000000000bce      0xba7 build/uart.o
+ .debug_info    0x0000000000001775      0x2bc build/stdio.o
+ .debug_info    0x0000000000001a31       0x26 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .debug_info    0x0000000000001a57       0x26 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.debug_abbrev   0x0000000000000000      0x41b
+ .debug_abbrev  0x0000000000000000       0x14 build/Entry.os
+ .debug_abbrev  0x0000000000000014       0x44 build/Main.o
+ .debug_abbrev  0x0000000000000058       0xf8 build/regs.o
+ .debug_abbrev  0x0000000000000150      0x172 build/uart.o
+ .debug_abbrev  0x00000000000002c2      0x131 build/stdio.o
+ .debug_abbrev  0x00000000000003f3       0x14 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x0000000000000407       0x14 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.debug_aranges  0x0000000000000000       0xd8
+ .debug_aranges
+                0x0000000000000000       0x20 build/Entry.os
+ .debug_aranges
+                0x0000000000000020       0x20 build/Main.o
+ .debug_aranges
+                0x0000000000000040       0x18 build/regs.o
+ .debug_aranges
+                0x0000000000000058       0x20 build/uart.o
+ .debug_aranges
+                0x0000000000000078       0x20 build/stdio.o
+ .debug_aranges
+                0x0000000000000098       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000000000000b8       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.debug_str      0x0000000000000000      0x57a
+ .debug_str     0x0000000000000000       0x40 build/Entry.os
+ .debug_str     0x0000000000000040       0xd7 build/Main.o
+                                        0x117 (size before relaxing)
+ .debug_str     0x0000000000000117      0x30b build/regs.o
+                                        0x411 (size before relaxing)
+ .debug_str     0x0000000000000422       0x4f build/uart.o
+                                        0x450 (size before relaxing)
+ .debug_str     0x0000000000000471       0x7c build/stdio.o
+                                        0x1a5 (size before relaxing)
+ .debug_str     0x00000000000004ed       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
+ .debug_str     0x000000000000057a       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_dvmd_tls.o)
+
+.debug_frame    0x0000000000000000      0x168
+ .debug_frame   0x0000000000000000       0x2c build/Main.o
+ .debug_frame   0x000000000000002c       0x70 build/uart.o
+ .debug_frame   0x000000000000009c       0xac build/stdio.o
+ .debug_frame   0x0000000000000148       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/libgcc.a(_udivsi3.o)
